@@ -12,6 +12,25 @@ import UIKit
 let π = CGFloat(Double.pi)
 
 class CanvasView: UIImageView {
+    // Setting
+    @IBInspectable var borderColor: UIColor = .clear {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
+    
     // Parameters
     private let forceSensitivity: CGFloat = 4.0
     private var pencilTexture = UIColor(patternImage: UIImage(named: "PencilTexture")!)
@@ -25,6 +44,12 @@ class CanvasView: UIImageView {
     
     //  private var drawColor: UIColor = UIColor.redColor()
     private var drawColor: UIColor = UIColor.black
+    
+    var strokePoints = [CGPoint]()
+    var cellWidth: Int = 0
+    var cellHeight: Int = 0
+    var cells : [[Int]] = []
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //
@@ -83,6 +108,9 @@ class CanvasView: UIImageView {
             
             // Get pencil information
             print("Azimuth:",touch.azimuthUnitVector(in: self)," Altitude:",touch.altitudeAngle, " Location:", touch.location(in: self))
+            
+            print(self.strokePoints.last as Any, self.frame.maxX-self.frame.minX,self.frame.maxY-self.frame.minY)
+            convertPix2Mat(strokePoints: strokePoints)
         } else {
             lineWidth = 40
             eraserColor.setStroke()
@@ -185,6 +213,20 @@ class CanvasView: UIImageView {
         lineWidth = lineWidth * normalizedAltitude + minLineWidth
         
         return lineWidth
+    }
+    
+    func convertPix2Mat(strokePoints: [CGPoint]) {
+        self.cellWidth = Int((self.frame.maxX-self.frame.minX)*2)
+        self.cellHeight = Int((self.frame.maxY-self.frame.minY)*2)
+        self.cells = Array(repeating: Array(repeating: 0, count: cellWidth), count: cellHeight)
+        
+        for point in strokePoints
+        {
+            let x = Int(Float(point.x)*2)
+            let y = Int(Float(point.y)*2)
+            
+            cells[x][y] = 1
+        }
     }
 }
 
