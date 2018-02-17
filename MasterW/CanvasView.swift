@@ -10,18 +10,21 @@ import UIKit
 
 //let π = CGFloat(M_PI)
 let π = CGFloat(Double.pi)
-private let forceSensitivity: CGFloat = 4.0
-private var pencilTexture = UIColor(patternImage: UIImage(named: "PencilTexture")!)
-private let tiltThreshold = π/6  // 30º
-private let minLineWidth: CGFloat = 5
 
 class CanvasView: UIImageView {
-    
     // Parameters
+    private let forceSensitivity: CGFloat = 4.0
+    private var pencilTexture = UIColor(patternImage: UIImage(named: "PencilTexture")!)
+    private let tiltThreshold = π/6  // 30º
+    private let minLineWidth: CGFloat = 5
+    private var eraserColor: UIColor {
+        return backgroundColor ?? UIColor.white
+    }
     private let defaultLineWidth:CGFloat = 6
     
+    
     //  private var drawColor: UIColor = UIColor.redColor()
-    private var drawColor: UIColor = UIColor.red
+    private var drawColor: UIColor = UIColor.black
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //
@@ -55,9 +58,6 @@ class CanvasView: UIImageView {
         // Update image
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        // Get pencil information
-        print("Azimuth:",touch.azimuthUnitVector(in: self)," Altitude:",touch.altitudeAngle)
     }
     
     private func drawStroke(context: CGContext?, touch: UITouch) {
@@ -70,15 +70,24 @@ class CanvasView: UIImageView {
         
         var lineWidth:CGFloat
         
-        if touch.altitudeAngle < tiltThreshold {
-            lineWidth = lineWidthForShading(context: context, touch: touch)
+        // Apply eraser/shade
+        if touch.type == .stylus {
+            if touch.altitudeAngle < tiltThreshold {
+                lineWidth = lineWidthForShading(context: context, touch: touch)
+            } else {
+                lineWidth = lineWidthForDrawing(context: context, touch: touch)
+            }
+            // Set texture
+            drawColor.setStroke()
+            //pencilTexture.setStroke()
+            
+            // Get pencil information
+            print("Azimuth:",touch.azimuthUnitVector(in: self)," Altitude:",touch.altitudeAngle, " Location:", touch.location(in: self))
         } else {
-            lineWidth = lineWidthForDrawing(context: context, touch: touch)
+            lineWidth = 40
+            eraserColor.setStroke()
         }
         
-        // Set texture
-        // drawColor.setStroke()
-        pencilTexture.setStroke()
         
         // Configure line
         context?.setLineWidth(lineWidth)
