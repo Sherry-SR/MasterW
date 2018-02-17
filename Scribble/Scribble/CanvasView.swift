@@ -24,6 +24,7 @@ import UIKit
 
 //let π = CGFloat(M_PI)
 let π = CGFloat(Double.pi)
+private let forceSensitivity: CGFloat = 4.0
 
 class CanvasView: UIImageView {
   
