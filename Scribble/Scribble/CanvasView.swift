@@ -24,30 +24,72 @@ import UIKit
 
 //let π = CGFloat(M_PI)
 let π = CGFloat(Double.pi)
-private let forceSensitivity: CGFloat = 4.0
+
+
 
 class CanvasView: UIImageView {
+    
+
+    
+    @IBInspectable var borderColor: UIColor = .clear {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
   
   // Parameters
+    
+    var strokePoints = [CGPoint]()
+    var cellWidth: Int = 0
+    var cellHeight: Int = 0
+    var cells : [[Int]] = []
+
+//    init(cellWidth: Int, cellHeight: Int, strokePoints: [CGPoint], cells:[[Int]]) {
+//        let frame = self.frame
+//        self.strokePoints = []
+//        self.cellWidth = Int((self.frame.maxX-self.frame.minX)*2)
+//        self.cellHeight = Int((self.frame.maxY-self.frame.minY)*2)
+//        self.cells = Array(repeating: Array(repeating: 0, count: cellWidth), count: cellHeight)
+//
+//        //Or you can use custom frame.
+//        super.init(frame: frame)
+//    }
+    
+
+
+    
   private let defaultLineWidth:CGFloat = 6
   
 //  private var drawColor: UIColor = UIColor.redColor()
     private var drawColor: UIColor = UIColor.red
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//    }
-//  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
     guard let touch = touches.first else { return }
     
     UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        
+        
     let context = UIGraphicsGetCurrentContext()
     
+
+        
+        
     // Draw previous image into context
-//    image?.drawInRect(bounds)
     image?.draw(in: bounds)
 
-//    drawStroke(context, touch: touch)
     drawStroke(context: context, touch: touch)
     
     // Update image
@@ -59,8 +101,13 @@ class CanvasView: UIImageView {
     let previousLocation = touch.previousLocation(in: self)
 //    let previousLocation = touch.previousLocationInView(self)
     let location = touch.location(in: self)
-
-//    let location = touch.locationInView(self)
+    strokePoints.append(location)
+    
+    
+    print(strokePoints.last, self.frame.maxX-self.frame.minX,self.frame.maxY-self.frame.minY)
+    convertPix2Mat(strokePoints: strokePoints)
+    
+    
     // Calculate line width for drawing stroke
     let lineWidth = lineWidthForDrawing(context: context, touch: touch)
     // Set color
@@ -85,7 +132,7 @@ class CanvasView: UIImageView {
   }
   
   private func lineWidthForDrawing(context: CGContext?, touch: UITouch) -> CGFloat {
-
+    
     let lineWidth = defaultLineWidth
     
     return lineWidth
@@ -112,4 +159,18 @@ class CanvasView: UIImageView {
       image = nil
     }
   }
+    
+    func convertPix2Mat(strokePoints: [CGPoint]) {
+        self.cellWidth = Int((self.frame.maxX-self.frame.minX)*2)
+        self.cellHeight = Int((self.frame.maxY-self.frame.minY)*2)
+        self.cells = Array(repeating: Array(repeating: 0, count: cellWidth), count: cellHeight)
+        
+        for point in strokePoints
+        {
+            let x = Int(Float(point.x)*2)
+            let y = Int(Float(point.y)*2)
+
+            cells[x][y] = 1
+        }
+    }
 }

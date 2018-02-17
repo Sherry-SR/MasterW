@@ -22,16 +22,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBF-1D-PJp" customClass="CanvasView" customModule="Scribble" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="834" height="1092"/>
+                                <rect key="frame" x="265" y="394" width="329" height="151"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tij-bg-gaO">
+                                <rect key="frame" x="497" y="499" width="68" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="ConfirmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="srb-wR-2b8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DLa-PT-5Rx"/>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Xjj-yD-t0w"/>
-                            <constraint firstAttribute="trailing" secondItem="zBF-1D-PJp" secondAttribute="trailing" id="do4-zQ-V6n"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" id="xeF-q0-K7c"/>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="265" id="DLa-PT-5Rx"/>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="374" id="Xjj-yD-t0w"/>
+                            <constraint firstAttribute="trailing" secondItem="zBF-1D-PJp" secondAttribute="trailing" constant="240" id="do4-zQ-V6n"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="567" id="xeF-q0-K7c"/>
                         </constraints>
                     </view>
                     <connections>
@@ -40,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="330"/>
+            <point key="canvasLocation" x="304.31654676258995" y="329.67625899280574"/>
         </scene>
     </scenes>
 </document>
