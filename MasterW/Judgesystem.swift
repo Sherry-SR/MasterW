@@ -21,9 +21,9 @@ extension UIImage {
         let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
         let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
         let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-        let gray = Int(0.21*r  + 0.72*g + 0.07*b)
-        return gray
+        //let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        let gray = 0.21*r  + 0.72*g + 0.07*b
+        return Int(gray.rounded())
     }
     
 }
@@ -31,6 +31,14 @@ extension UIImage {
 class Judgesystem {
     
     func testRating(handwriting: [[Bool]]) -> Double {
+        //
+        /*
+        var handwriting = Array(repeating: Array(repeating: true, count: 300), count: 300)
+        handwriting[1][1] = true
+        handwriting[1][2] = true
+        handwriting[1][100] = true
+        handwriting[1][250] = true
+        */
         
         let pattern1 = UIImage(named: "Rouge_test_Best_s")!
         let pattern2 = UIImage(named: "Rouge_test_hack_s")!
@@ -53,16 +61,19 @@ class Judgesystem {
             for yy in 0..<p1_height {
                 var point = CGPoint(x:xx,y:yy)
                 var color = pattern1.getPixelColor(pos: point)
-                if color == 1 {
+                //print(color)
+                if color == 0 {
                     pattern[0][yy][xx] = true
                 }
+                
             }
         }
+        
         for xx in 0..<p2_width {
             for yy in 0..<p2_height {
                 var point = CGPoint(x:xx,y:yy)
                 var color = pattern1.getPixelColor(pos: point)
-                if color == 1 {
+                if color == 0 {
                     pattern[1][yy][xx] = true
                 }
             }
@@ -71,7 +82,7 @@ class Judgesystem {
             for yy in 0..<p3_height {
                 var point = CGPoint(x:xx,y:yy)
                 var color = pattern1.getPixelColor(pos: point)
-                if color == 1 {
+                if color == 0 {
                     pattern[2][yy][xx] = true
                 }
             }
@@ -161,11 +172,11 @@ class Judgesystem {
         var hit = 0
         for i in 0..<seg_num {
             var temp_image = Array(repeating: Array(repeating: false, count: pattern[i][0].count), count: pattern[i].count)
-            let width_para = (seg_pos[i][1] - seg_pos[i][0] + 1) / pattern[i][0].count
-            let height_para = (seg_pos[i][3] - seg_pos[i][2] + 1) / pattern[i].count
+            let width_para = Double(seg_pos[i][1] - seg_pos[i][0] + 1) / Double(pattern[i][0].count)
+            let height_para = Double(seg_pos[i][3] - seg_pos[i][2] + 1) / Double(pattern[i].count)
             for ii in 0..<pattern[i].count{
                 for jj in 0..<pattern[i][0].count{
-                    temp_image[ii][jj] = handwriting[Int(ii*height_para)][Int(jj*width_para)]
+                    temp_image[ii][jj] = handwriting[Int(Double(ii)*height_para)][Int(Double(jj)*width_para)]
                     total += 1
                     if temp_image[ii][jj] == pattern[i][ii][jj]{
                         hit += 1
