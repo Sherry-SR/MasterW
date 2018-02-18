@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_5" orientation="portrait">
+    <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,12 +18,16 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBF-1D-PJp" customClass="CanvasView" customModule="MasterW" customModuleProvider="target">
-                                <rect key="frame" x="265" y="394" width="329" height="151"/>
+                                <rect key="frame" x="253" y="394" width="607" height="151"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="607" id="ep8-Dv-kHc"/>
+                                    <constraint firstAttribute="height" constant="151" id="vWS-p5-FYp"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,26 +40,34 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tij-bg-gaO">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tij-bg-gaO">
                                 <rect key="frame" x="502" y="553" width="68" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="ConfirmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="srb-wR-2b8"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Bal_a" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-Pm-0IR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bal_a" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-Pm-0IR">
                                 <rect key="frame" x="384" y="408" width="91" height="122"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="7Ux-nM-qPd"/>
+                                </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LV-jH-CYk">
+                                <rect key="frame" x="48" y="553" width="112" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.12800932679999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="265" id="DLa-PT-5Rx"/>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="374" id="Xjj-yD-t0w"/>
-                            <constraint firstAttribute="trailing" secondItem="zBF-1D-PJp" secondAttribute="trailing" constant="240" id="do4-zQ-V6n"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="567" id="xeF-q0-K7c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sJl-Pm-0IR" secondAttribute="bottom" constant="304" id="BQP-Ai-Z0P"/>
+                            <constraint firstItem="sJl-Pm-0IR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="384" id="NBl-0r-jfy"/>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="374" id="RfL-bs-7va"/>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="centerY" secondItem="sJl-Pm-0IR" secondAttribute="centerY" id="X7D-dq-OtV"/>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q33-71-bEQ"/>
+                            <constraint firstItem="tij-bg-gaO" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="8" symbolic="YES" id="w3E-sO-uyE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -65,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.31654676258995" y="329.67625899280574"/>
+            <point key="canvasLocation" x="304.31654676258995" y="329.49640287769785"/>
         </scene>
     </scenes>
     <resources>
