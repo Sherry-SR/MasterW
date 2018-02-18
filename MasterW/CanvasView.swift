@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol MyDelgate: class{
+    func sendForce(forceData: Float)
+}
 //let π = CGFloat(M_PI)
 let π = CGFloat(Double.pi)
 
 class CanvasView: UIImageView {
+    
+    weak var delegate: MyDelgate?
     // Setting
     @IBInspectable var borderColor: UIColor = .clear {
         didSet {
@@ -95,6 +100,7 @@ class CanvasView: UIImageView {
         
         var lineWidth:CGFloat
         
+        
         // Apply eraser/shade
         if touch.type == .stylus {
             if touch.altitudeAngle < tiltThreshold {
@@ -120,18 +126,18 @@ class CanvasView: UIImageView {
         // Configure line
         context?.setLineWidth(lineWidth)
         context?.setLineCap(.round)
-        //    CGContextSetLineWidth(context, lineWidth)
-        //    CGContextSetLineCap(context, .Round)
-        
-        
+
+
         // Set up the points
         context?.move(to: CGPoint(x: previousLocation.x, y: previousLocation.y))
         context?.addLine(to: CGPoint(x: location.x, y: location.y))
-        //    CGContextMoveToPoint(context, previousLocation.x, previousLocation.y)
-        //    CGContextAddLineToPoint(context, location.x, location.y)
+
         // Draw the stroke
         context?.strokePath()
-        //    CGContextStrokePath(context)
+        
+        // change forceView color
+        delegate?.sendForce(forceData: Float(touch.force))
+
         
     }
     
@@ -227,6 +233,10 @@ class CanvasView: UIImageView {
             
             cells[x][y] = 1
         }
+    }
+    
+    func getPixelMatrix() -> String{
+        return "mat"
     }
 }
 

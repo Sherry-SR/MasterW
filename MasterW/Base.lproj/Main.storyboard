@@ -40,39 +40,47 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tij-bg-gaO">
-                                <rect key="frame" x="502" y="553" width="68" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="ConfirmButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="srb-wR-2b8"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bal_a" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-Pm-0IR">
                                 <rect key="frame" x="384" y="408" width="91" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="91" id="7Ux-nM-qPd"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LV-jH-CYk">
-                                <rect key="frame" x="48" y="553" width="112" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LV-jH-CYk">
+                                <rect key="frame" x="75" y="427" width="112" height="84"/>
                                 <color key="backgroundColor" red="0.12800932679999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="force value will be displayed here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y6F-H9-YR8">
+                                <rect key="frame" x="253" y="573" width="239" height="47"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="3Sc-y7-28r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="zBF-1D-PJp" firstAttribute="leading" secondItem="1LV-jH-CYk" secondAttribute="trailing" constant="66" id="6FD-UF-ozt"/>
+                            <constraint firstItem="y6F-H9-YR8" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="28" id="7e3-gF-mel"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sJl-Pm-0IR" secondAttribute="bottom" constant="304" id="BQP-Ai-Z0P"/>
                             <constraint firstItem="sJl-Pm-0IR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="384" id="NBl-0r-jfy"/>
                             <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="374" id="RfL-bs-7va"/>
+                            <constraint firstItem="1LV-jH-CYk" firstAttribute="centerY" secondItem="sJl-Pm-0IR" secondAttribute="centerY" id="Ufc-x5-OWp"/>
                             <constraint firstItem="zBF-1D-PJp" firstAttribute="centerY" secondItem="sJl-Pm-0IR" secondAttribute="centerY" id="X7D-dq-OtV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1LV-jH-CYk" secondAttribute="bottom" constant="323" id="bhj-N0-nYj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y6F-H9-YR8" secondAttribute="bottom" constant="214" id="mSy-LC-tuv"/>
+                            <constraint firstItem="1LV-jH-CYk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="75" id="nmK-6x-4is"/>
                             <constraint firstItem="zBF-1D-PJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q33-71-bEQ"/>
-                            <constraint firstItem="tij-bg-gaO" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="8" symbolic="YES" id="w3E-sO-uyE"/>
+                            <constraint firstItem="y6F-H9-YR8" firstAttribute="leading" secondItem="zBF-1D-PJp" secondAttribute="leading" id="u5e-zb-kgV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BestHWImageView" destination="sJl-Pm-0IR" id="7Io-hL-LoG"/>
                         <outlet property="canvasView" destination="zBF-1D-PJp" id="BCN-O3-0CZ"/>
+                        <outlet property="forceView" destination="1LV-jH-CYk" id="wD4-gI-Svr"/>
+                        <outlet property="writescoreTextView" destination="y6F-H9-YR8" id="zmM-9W-tYd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -101,11 +101,11 @@
 			children = (
 				4BD0D544203899CA00E36BDD /* AppDelegate.swift */,
 				4BD0D546203899CA00E36BDD /* ViewController.swift */,
+				4BFA20942038C5F500535E4C /* CanvasView.swift */,
 				4BD0D548203899CA00E36BDD /* Main.storyboard */,
 				4BD0D54B203899CA00E36BDD /* Assets.xcassets */,
 				4BD0D54D203899CA00E36BDD /* LaunchScreen.storyboard */,
 				4BD0D550203899CA00E36BDD /* Info.plist */,
-				4BFA20942038C5F500535E4C /* CanvasView.swift */,
 			);
 			path = MasterW;
 			sourceTree = "<group>";
