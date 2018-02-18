@@ -170,6 +170,7 @@ class Judgesystem {
         
         var total = 0
         var hit = 0
+        var miss = 0
         for i in 0..<seg_num {
             var temp_image = Array(repeating: Array(repeating: false, count: pattern[i][0].count), count: pattern[i].count)
             let width_para = Double(seg_pos[i][1] - seg_pos[i][0] + 1) / Double(pattern[i][0].count)
@@ -177,16 +178,21 @@ class Judgesystem {
             for ii in 0..<pattern[i].count{
                 for jj in 0..<pattern[i][0].count{
                     temp_image[ii][jj] = handwriting[Int(Double(ii)*height_para)][Int(Double(jj)*width_para)]
-                    total += 1
-                    if temp_image[ii][jj] == pattern[i][ii][jj]{
+                    if pattern[i][ii][jj] {
+                        total += 1
+                    }
+                    if pattern[i][ii][jj] && temp_image[ii][jj] == pattern[i][ii][jj]{
                         hit += 1
+                    }
+                    if temp_image[ii][jj] && temp_image[ii][jj] != pattern[i][ii][jj]{
+                        miss += 1
                     }
                 }
             }
             
         }
         
-        let result = (Double(hit)/Double(total))
+        let result = ((Double(hit) - Double(miss)*0.3)/Double(total))
         
         
         return result
