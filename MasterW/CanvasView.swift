@@ -107,9 +107,9 @@ class CanvasView: UIImageView {
             //pencilTexture.setStroke()
             
             // Get pencil information
-            //print("Azimuth:",touch.azimuthUnitVector(in: self)," Altitude:",touch.altitudeAngle, " Location:", touch.location(in: self))
+            print("Azimuth:",touch.azimuthUnitVector(in: self)," Altitude:",touch.altitudeAngle, " Location:", touch.location(in: self))
             
-            //print(self.strokePoints.last as Any, self.frame.maxX-self.frame.minX,self.frame.maxY-self.frame.minY)
+            print(self.strokePoints.last as Any, self.frame.maxX-self.frame.minX,self.frame.maxY-self.frame.minY)
             convertPix2Mat(strokePoints: strokePoints)
         } else {
             lineWidth = 40
