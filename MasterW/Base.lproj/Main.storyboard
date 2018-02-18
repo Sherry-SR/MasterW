@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -21,13 +26,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBF-1D-PJp" customClass="CanvasView" customModule="MasterW" customModuleProvider="target">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBF-1D-PJp" customClass="CanvasView" customModule="MasterW" customModuleProvider="target">
                                 <rect key="frame" x="253" y="394" width="607" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="607" id="ep8-Dv-kHc"/>
-                                    <constraint firstAttribute="height" constant="151" id="vWS-p5-FYp"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,41 +42,35 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bal_a" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-Pm-0IR">
-                                <rect key="frame" x="384" y="408" width="91" height="122"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="91" id="7Ux-nM-qPd"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sen" translatesAutoresizingMaskIntoConstraints="NO" id="sJl-Pm-0IR">
+                                <rect key="frame" x="289" y="408" width="534" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LV-jH-CYk">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LV-jH-CYk">
                                 <rect key="frame" x="75" y="427" width="112" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12800932679999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="force value will be displayed here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y6F-H9-YR8">
-                                <rect key="frame" x="253" y="573" width="239" height="47"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Force value will be displayed here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y6F-H9-YR8">
+                                <rect key="frame" x="253" y="573" width="239" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="3Sc-y7-28r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-EG-YUQ">
+                                <rect key="frame" x="824" y="573" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X9j-Vh-CsZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="leading" secondItem="1LV-jH-CYk" secondAttribute="trailing" constant="66" id="6FD-UF-ozt"/>
-                            <constraint firstItem="y6F-H9-YR8" firstAttribute="top" secondItem="zBF-1D-PJp" secondAttribute="bottom" constant="28" id="7e3-gF-mel"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sJl-Pm-0IR" secondAttribute="bottom" constant="304" id="BQP-Ai-Z0P"/>
-                            <constraint firstItem="sJl-Pm-0IR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="384" id="NBl-0r-jfy"/>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="374" id="RfL-bs-7va"/>
-                            <constraint firstItem="1LV-jH-CYk" firstAttribute="centerY" secondItem="sJl-Pm-0IR" secondAttribute="centerY" id="Ufc-x5-OWp"/>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="centerY" secondItem="sJl-Pm-0IR" secondAttribute="centerY" id="X7D-dq-OtV"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1LV-jH-CYk" secondAttribute="bottom" constant="323" id="bhj-N0-nYj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y6F-H9-YR8" secondAttribute="bottom" constant="214" id="mSy-LC-tuv"/>
-                            <constraint firstItem="1LV-jH-CYk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="75" id="nmK-6x-4is"/>
-                            <constraint firstItem="zBF-1D-PJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q33-71-bEQ"/>
-                            <constraint firstItem="y6F-H9-YR8" firstAttribute="leading" secondItem="zBF-1D-PJp" secondAttribute="leading" id="u5e-zb-kgV"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="BestHWImageView" destination="sJl-Pm-0IR" id="7Io-hL-LoG"/>
@@ -85,10 +81,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.31654676258995" y="329.49640287769785"/>
+            <point key="canvasLocation" x="303.77697841726621" y="328.77697841726621"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Bal_a" width="142" height="141"/>
+        <image name="sen" width="2021" height="355"/>
     </resources>
 </document>

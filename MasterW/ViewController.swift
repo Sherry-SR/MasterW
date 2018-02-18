@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, MyDelgate {
-    
+
     @IBOutlet weak var writescoreTextView: UITextView!
     @IBOutlet weak var forceView: UIView!
     @IBOutlet weak var canvasView: CanvasView!
@@ -28,54 +28,52 @@ class ViewController: UIViewController, MyDelgate {
     
     // Shake to clear screen
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    @IBAction func clearButton(_ sender: UIButton) {
         canvasView.clearCanvas(animated: true)
     }
-    
     private func clickedConfirmHWButtonAction(sender: AnyObject){
         let indicator = 10 * fontsInd + levelInd
-        var imagename: String = ""
+        var imagename: String = "sen_cav.png"
         switch indicator {
         case 0:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 1:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 2:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 3:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 10:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 11:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 12:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 13:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 20:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 21:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 22:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         case 23:
-            imagename = ""
+            imagename = "sen_cav.png"
             break
         default:
             break
         }
-        imagename = "Bal_train_a_d_cav.png"
         BestHWImageView.image = UIImage(named: imagename)
     }
     //  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
@@ -85,7 +83,7 @@ class ViewController: UIViewController, MyDelgate {
     func sendForce(forceData: Float) {
         self.writescoreTextView?.text = String(forceData)
         
-        var forceColor = mixGreenAndRed(greenAmount: (Float(forceData)-0.7)/1.3)
+        let forceColor = mixGreenAndRed(greenAmount: (Float(forceData)-0.7)/1.3)
         forceView.backgroundColor = forceColor
         
     }
